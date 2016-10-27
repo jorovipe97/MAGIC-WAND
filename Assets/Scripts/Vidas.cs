@@ -46,7 +46,7 @@ public class Vidas : MonoBehaviour {
 			pelota.DetenerMovimiento ();
 			barra.enabled = false; 
 
-			SiguienteNivel.nivelAlCargar = "Portada";
+			SiguienteNivel.nivelAlCargar = "MainMenu";
 			SiguienteNivel.ActivarCarga ();
 
 		} else {
