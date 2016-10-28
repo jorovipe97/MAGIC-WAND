@@ -48,6 +48,8 @@ public class pelota : MonoBehaviour {
 	void Start ()
 	{
 		posicionInicial = transform.position;
+        Vidas2.OnNoMoreLifes += DetenerMovimiento;
+        Puntuacion.OnLevelCompleted += DetenerMovimiento;
 	}
 
 	public void Reset()
@@ -61,7 +63,7 @@ public class pelota : MonoBehaviour {
 	public void DetenerMovimiento ()
 	{
 		rig.isKinematic = true; 
-		rig.velocity = Vector3.zero ;  // devuelve uno con todos los datos a cero.
+		rig.velocity = Vector3.zero;  // devuelve uno con todos los datos a cero.
 	}
 	// Update is called once per frame
 	void Update () 
@@ -74,7 +76,7 @@ public class pelota : MonoBehaviour {
 
 			rig.isKinematic = false; // quita el Is Kinematic
 
-			rig.AddForce (new Vector3 (velocidadInicial*Random.Range(-1, 1), velocidadInicial, 0)); // activa una fuerza en la direccion del Vector3 
+			rig.AddForce (new Vector3 (velocidadInicial*Random.Range(0.5f, 1), velocidadInicial, 0)); // activa una fuerza en la direccion del Vector3 
 		}
 	}
 

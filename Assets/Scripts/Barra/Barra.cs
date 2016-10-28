@@ -11,7 +11,8 @@ public class Barra : MonoBehaviour {
 	void Start () {
 		
 		posicionInicial = transform.position;
-		
+        Puntuacion.OnLevelCompleted += DisableGameObject;
+        Vidas2.OnNoMoreLifes += DisableGameObject;
 	}
 
 	public void Reset()
@@ -24,4 +25,9 @@ public class Barra : MonoBehaviour {
 		float posX = transform.position.x + (tecladoHorizontal* velocidad * Time.deltaTime);
 		transform.position = new Vector3 (Mathf.Clamp(posX,-8,8),transform.position.y,transform.position.z);
 	}
+
+    void DisableGameObject()
+    {
+        enabled = false;
+    }
 }

@@ -35,16 +35,16 @@ public class Puntos : MonoBehaviour {
 	}
 
 	public void GanarPunto ()
-	{
+	{/*
 		Puntos.puntos++; 
-		ActualizarMarcadorPuntos (); 
+		ActualizarMarcadorPuntos (); */
 
 		if (contenedorBloques.childCount <= 0) 
 		{
-			pelota.DetenerMovimiento ();
+			//pelota.DetenerMovimiento ();
 			barra.enabled = false; 
 
-			if (siguienteNivel.EsultimoNivel ()) 
+			if (siguienteNivel.EsUltimoNivel ()) 
 			{
 				juegoCompletado.SetActive ( true);
 

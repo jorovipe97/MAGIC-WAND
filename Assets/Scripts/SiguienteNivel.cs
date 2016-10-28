@@ -4,7 +4,10 @@ using UnityEngine.SceneManagement;
 
 public class SiguienteNivel : MonoBehaviour {
 
-	public string nivelAlCargar;
+    public delegate void LevelEvents();
+    public static event LevelEvents OnUltimoNivel;
+
+    public string nivelACargar;
 	public float retraso;
 
 	[ContextMenu("ActivarCarga")] // para ejecutar desde unity al darle click.
@@ -16,24 +19,19 @@ public class SiguienteNivel : MonoBehaviour {
 
 	void CargarNivel()
 	{
-		if (!EsultimoNivel ()) 
-		{
-			Vidas.vidas++; 
-		}
-		SceneManager.LoadScene (nivelAlCargar);
+		SceneManager.LoadScene (nivelACargar);
 		
 	}
 
-	public bool EsultimoNivel()
+	public bool EsUltimoNivel()
 	{
-		if (nivelAlCargar == "Portada") {
+		if (nivelACargar == "Portada") {
+            OnUltimoNivel();
 			return true;
 		} 
 		else
 		{
 			return false; 
 		}
-
-		//return nivelAlCargar == "Portada";
 	}
 }
