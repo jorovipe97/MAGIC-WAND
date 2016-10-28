@@ -17,10 +17,11 @@ public class Vidas : MonoBehaviour {
 	public SiguienteNivel SiguienteNivel; 
 
 	public SonidosFinPartida sonidosFinPartida;
-
-	void Star()
+    
+    
+	void Start()
 	{
-		ActualizarMarcadorVidas ();
+		//ActualizarMarcadorVidas ();
 	}
 
 	void ActualizarMarcadorVidas()
@@ -36,7 +37,7 @@ public class Vidas : MonoBehaviour {
 		Vidas.vidas --;
 		ActualizarMarcadorVidas (); 
 
-
+        /*
 		if (vidas <= 0) {
 
 			sonidosFinPartida.GameOver ();
@@ -52,8 +53,7 @@ public class Vidas : MonoBehaviour {
 		} else {
 			barra.Reset ();
 			pelota.Reset (); 
-		}
+		}*/
 	}
-
 
 }

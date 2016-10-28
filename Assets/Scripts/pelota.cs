@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 using System.Collections;
+using Random = UnityEngine.Random;
 
 public class pelota : MonoBehaviour {
 
@@ -37,8 +38,11 @@ public class pelota : MonoBehaviour {
 
 
 	// La OTRa manera de tener acceso al padre
+    public Transform barra; // y unity nos permite agregar algun objeto que tenga esta componente.
+    public Barra barra2;
 
-	public Transform barra; // y unity nos permite agregar algun objeto que tenga esta componente.
+    public delegate void PelotaEvents();
+    public static event PelotaEvents OnBallDie;
 
 	// Use this for initialization
 	void Start ()
@@ -51,8 +55,7 @@ public class pelota : MonoBehaviour {
 		transform.position = posicionInicial; // para que la pelota regrese a la posicion inicial.
 		transform.SetParent (barra); // para que tenga padre, necesito referencia al objeto padre
 		enJuego = false ;
-		DetenerMovimiento ();  
-	
+		DetenerMovimiento ();
 	}
 
 	public void DetenerMovimiento ()
@@ -63,7 +66,7 @@ public class pelota : MonoBehaviour {
 	// Update is called once per frame
 	void Update () 
 	{
-		if(! enJuego && Input.GetButtonDown ("Fire1") ) // sin no estamos jugando y se presiona la tecla para comenzar
+		if(!enJuego && Input.GetButtonDown ("Fire1") ) // sin no estamos jugando y se presiona la tecla para comenzar
 		{
 			enJuego = true; 
 
@@ -71,7 +74,19 @@ public class pelota : MonoBehaviour {
 
 			rig.isKinematic = false; // quita el Is Kinematic
 
-			rig.AddForce (new Vector3 (velocidadInicial, velocidadInicial, 0)); // activa una fuerza en la direccion del Vector3 
+			rig.AddForce (new Vector3 (velocidadInicial*Random.Range(-1, 1), velocidadInicial, 0)); // activa una fuerza en la direccion del Vector3 
 		}
 	}
+
+    void OnTriggerEnter(Collider other)
+    {
+        // Cuando la bola toque el suelo
+        if (other.gameObject.tag.Equals("Suelo"))
+        {
+            // Debug.Log("La bola ha muerto oops");
+            barra2.Reset();
+            Reset();
+            OnBallDie();
+        }
+    }
 }
