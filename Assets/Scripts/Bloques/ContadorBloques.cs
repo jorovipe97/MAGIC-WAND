@@ -1,8 +1,8 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class ContadorBloques : MonoBehaviour {
 
+public class ContadorBloques : MonoBehaviour {
     public delegate void ContadorDeBloques();
     public static event ContadorDeBloques OnBloqueDestroy;
     public static event ContadorDeBloques OnZeroBloques;
