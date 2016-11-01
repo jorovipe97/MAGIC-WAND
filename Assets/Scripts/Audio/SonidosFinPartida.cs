@@ -24,7 +24,8 @@ public class SonidosFinPartida : MonoBehaviour {
 
 	public void NivelCompletado ()
 	{
-		ReproduceSonido (completado); 
+		ReproduceSonido (completado);
+		Debug.Log ("Has ganado");
 	}
 
 	void ReproduceSonido(AudioClip sonido)

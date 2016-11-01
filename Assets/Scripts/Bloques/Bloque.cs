@@ -1,8 +1,10 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public delegate void BloqueEvents(Vector3 position);
+
 public class Bloque : MonoBehaviour {
+	
+	public delegate void BloqueEvents(Vector3 position);
 
     public static event BloqueEvents OnBloqueDestroy;
 

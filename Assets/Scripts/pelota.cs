@@ -48,7 +48,8 @@ public class pelota : MonoBehaviour {
 	void Start ()
 	{
 		posicionInicial = transform.position;
-        Vidas2.OnNoMoreLifes += DetenerMovimiento;
+		Vidas2.OnNoMoreLifes += Desactive;
+		Vidas2.OnNoMoreLifes += Reset;
         Puntuacion.OnLevelCompleted += DetenerMovimiento;
 	}
 
@@ -65,6 +66,12 @@ public class pelota : MonoBehaviour {
 		rig.isKinematic = true; 
 		rig.velocity = Vector3.zero;  // devuelve uno con todos los datos a cero.
 	}
+
+	private void Desactive()
+	{
+		enabled = false;
+	}
+
 	// Update is called once per frame
 	void Update () 
 	{

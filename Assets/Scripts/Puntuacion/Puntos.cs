@@ -47,7 +47,6 @@ public class Puntos : MonoBehaviour {
 			if (siguienteNivel.EsUltimoNivel ()) 
 			{
 				juegoCompletado.SetActive ( true);
-
 			}
 			else
 			{
