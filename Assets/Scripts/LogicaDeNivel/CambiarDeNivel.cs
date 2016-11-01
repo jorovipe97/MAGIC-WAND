@@ -9,30 +9,32 @@ public class CambiarDeNivel : MonoBehaviour {
 	public float retraso = 5f;
 
 	void Start () {
+		
+
 		Vidas2.OnNoMoreLifes += ActivarCargaPierde;
 		Puntuacion.OnLevelCompleted += ActivarCargaGana;
 	
 	}
 	public void ActivarCargaGana() //
 	{
+		
 		Invoke ("CargarNivelSiGana", retraso); // se pondra en espera cierto tiempo y ejecutara ese metodo
 	}
 
 	public void ActivarCargaPierde() //
 	{
+
 		Invoke ("CargarNivelSiPierde", retraso); // se pondra en espera cierto tiempo y ejecutara ese metodo
 	}
 	void CargarNivelSiGana()
 	{
-		
-		SceneManager.LoadScene (NivelSiGana);
-
-
+		SceneManager.LoadScene (NivelSiGana, LoadSceneMode.Single);
 	}
 	void CargarNivelSiPierde()
 	{
-		SceneManager.LoadScene (NivelSiPierde);
+		//SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex); // 5.3
 
+		SceneManager.LoadScene (NivelSiPierde, LoadSceneMode.Single);
 	}
 
 }

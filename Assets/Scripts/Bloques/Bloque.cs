@@ -18,7 +18,7 @@ public class Bloque : MonoBehaviour {
     /// </summary>
 	void OnCollisionEnter() // Se llama en Is Trigger desactivado
 	{
-
+		Debug.Log ("Bloque destruido en Bloque.OnCollisionEnnter()");
         // Instantiate (efectoParticulas, transform.position, Quaternion.identity);
         OnBloqueDestroy(gameObject.transform.position);
         Destroy (gameObject);

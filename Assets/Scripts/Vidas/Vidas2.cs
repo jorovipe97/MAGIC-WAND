@@ -15,6 +15,7 @@ public class Vidas2 : MonoBehaviour {
 
     void Start()
     {
+		//_vidas = 4;
         pelota.OnBallDie += DisminuirVidas;
     }
 

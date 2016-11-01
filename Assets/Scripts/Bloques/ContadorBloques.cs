@@ -20,7 +20,8 @@ public class ContadorBloques : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
         int actualBloquesCount = gameObject.GetComponent<Transform>().childCount;
-        if (actualBloquesCount < countInitialBloques)
+		//Debug.Log ("Contador de bloques: " + actualBloquesCount);
+		if (actualBloquesCount < countInitialBloques)
         {
             countInitialBloques = gameObject.GetComponent<Transform>().childCount;
             //Debug.Log("Un bloque se destruyo");

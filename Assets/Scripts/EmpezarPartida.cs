@@ -9,7 +9,7 @@ public class EmpezarPartida : MonoBehaviour {
 		{
 			Puntos.puntos = 0; 
 			Vidas.vidas = 3;
-			SceneManager.LoadScene ("Nivel 01");
+			SceneManager.LoadScene ("Nivel 01", LoadSceneMode.Single);
 		}
 	}
 }
