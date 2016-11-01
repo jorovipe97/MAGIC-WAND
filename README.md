@@ -13,3 +13,11 @@ Se encarga de almacenar la puntuacion, lanza un evento cuando se ha alcanzado la
 ## DibujarPuntuacion.cs
 Se encarga de usar la puntuacion almacenada en la clase anterior y mostrarla en la GUI
 
+# bugs
+
+- abrir el juego
+- entro al primer nivel  me dejo matar
+- cuando muere va al menu principal
+- presion control para volver a empezar
+
+
