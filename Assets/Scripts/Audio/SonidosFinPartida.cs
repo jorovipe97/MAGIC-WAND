@@ -41,6 +41,8 @@ public class SonidosFinPartida : MonoBehaviour {
         // seguir accediendo al mismo evento aunque ya ha sido destruido
         // para evitar esto y hacer que se actualice en cada escena
         // es necesario desubscribirme de los eventos estaticos cuando la escena finaliza
+        // Keep in mind that since static members don't belong to a specific instance, the variable only exists once and is shared between all instances of that class.
+        // dado que cuando finaliza la escena se pierden todas las instancias la variable estatica de la funcion deja de existir
         Puntuacion.OnLevelCompleted -= NivelCompletado;
         Vidas2.OnNoMoreLifes -= GameOver;
     }
