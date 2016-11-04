@@ -7,7 +7,7 @@ public class Vidas2 : MonoBehaviour {
     public static event Vidas2Events OnNoMoreLifes;
     public static event Vidas2Events OnPierdeVida;
 
-    private static int _vidas = 4;
+    private int _vidas = 4;
     public int vidas
     {
         get { return _vidas; }
@@ -34,5 +34,16 @@ public class Vidas2 : MonoBehaviour {
     void AumentarVidas(int aumentar = 1)
     {
         _vidas += aumentar;
+    }
+
+    void OnDestroy()
+    {
+        // Dado que los eventos a los que nos subscribimos son estaticos
+        // es decir, pertenecen a la clase y no a la instancia, cuando la escena
+        // finaliza la instancia se destruye y este codigo va a intentar 
+        // seguir accediendo al mismo evento aunque ya ha sido destruido
+        // para evitar esto y hacer que se actualice en cada escena
+        // es necesario desubscribirme de los eventos estaticos cuando la escena finaliza
+        pelota.OnBallDie -= DisminuirVidas;
     }
 }

@@ -44,8 +44,13 @@ public class pelota : MonoBehaviour {
     public delegate void PelotaEvents();
     public static event PelotaEvents OnBallDie;
 
-	// Use this for initialization
-	void Start ()
+    void Awake()
+    {
+        DontDestroyOnLoad(transform.gameObject);
+    }
+
+    // Use this for initialization
+    void Start ()
 	{
 		posicionInicial = transform.position;
 		Vidas2.OnNoMoreLifes += Desactive;
@@ -97,5 +102,18 @@ public class pelota : MonoBehaviour {
             Reset();
             OnBallDie();
         }
+    }
+
+    void OnDestroy()
+    {
+        // Dado que los eventos a los que nos subscribimos son estaticos
+        // es decir, pertenecen a la clase y no a la instancia, cuando la escena
+        // finaliza la instancia se destruye y este codigo va a intentar 
+        // seguir accediendo al mismo evento aunque ya ha sido destruido
+        // para evitar esto y hacer que se actualice en cada escena
+        // es necesario desubscribirme de los eventos estaticos cuando la escena finaliza
+        Vidas2.OnNoMoreLifes -= Desactive;
+        Vidas2.OnNoMoreLifes -= Reset;
+        Puntuacion.OnLevelCompleted -= DetenerMovimiento;
     }
 }
