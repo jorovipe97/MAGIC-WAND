@@ -7,6 +7,9 @@ public class Barra : MonoBehaviour {
 	// el evento del contador de bloques que dice cuando hay un bloque menos se suscribiera el metodo de ReducirTamaño
 	public float velocidad = 20f;
 
+	public ElementoInteractivo botonIzquierda;
+	public ElementoInteractivo botonDerecha;
+
 	Vector3 posicionInicial;
 	Vector3 TamañoInicial;
 
@@ -27,8 +30,18 @@ public class Barra : MonoBehaviour {
 	}
 
 	void Update () { 
-		float tecladoHorizontal = Input.GetAxisRaw("Horizontal");
-		float posX = transform.position.x + (tecladoHorizontal* velocidad * Time.deltaTime);
+		float direccion;
+		if (botonIzquierda.pulsado) {
+			direccion = -1;
+		} else {
+			if (botonDerecha.pulsado) {
+				direccion = 1;
+			} else {
+				direccion = Input.GetAxisRaw("Horizontal");
+			}
+		}
+		//float tecladoHorizontal = Input.GetAxisRaw("Horizontal");
+		float posX = transform.position.x + (direccion/*tecladoHorizontal*/* velocidad * Time.deltaTime);
 		transform.position = new Vector3 (Mathf.Clamp (posX, -8, 8), transform.position.y, transform.position.z);
 		//El mathf.Clamp hace que la posicion solo oxile entre esos así, esto para limitar que la barra se salga o supere las barreras (limites). 
 	}

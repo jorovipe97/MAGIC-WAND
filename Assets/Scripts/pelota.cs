@@ -36,7 +36,7 @@ public class pelota : MonoBehaviour {
 	}
 	*/
 
-
+	public ElementoInteractivo Pantalla;
 	// La OTRa manera de tener acceso al padre
     public Transform barra; // y unity nos permite agregar algun objeto que tenga esta componente.
     public Barra barra2;
@@ -80,7 +80,7 @@ public class pelota : MonoBehaviour {
 	// Update is called once per frame
 	void Update () 
 	{
-		if(!enJuego && Input.GetButtonDown ("Fire1") ) // sin no estamos jugando y se presiona la tecla para comenzar
+		if(!enJuego && (Input.GetButtonDown ("Fire1") || Pantalla.pulsado )) // sin no estamos jugando y se presiona la tecla para comenzar
 		{
 			enJuego = true; 
 
