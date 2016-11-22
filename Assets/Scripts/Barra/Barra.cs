@@ -42,7 +42,7 @@ public class Barra : MonoBehaviour {
 		}
 		//float tecladoHorizontal = Input.GetAxisRaw("Horizontal");
 		float posX = transform.position.x + (direccion/*tecladoHorizontal*/* velocidad * Time.deltaTime);
-		transform.position = new Vector3 (Mathf.Clamp (posX, -8, 8), transform.position.y, transform.position.z);
+		transform.position = new Vector3 (Mathf.Clamp (posX, -8.5f, 8.5f), transform.position.y, transform.position.z);
 		//El mathf.Clamp hace que la posicion solo oxile entre esos así, esto para limitar que la barra se salga o supere las barreras (limites). 
 	}
 
